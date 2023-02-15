@@ -1,0 +1,34 @@
+[
+{
+    "id": 0,
+    "title": "Album 1", 
+    "artist": "Artist 1",
+    "description": "Artist 1's debut album, Album 1.",
+    "year": 2021,
+    "image":"https://via.placeholder.com/150"
+  },
+  {
+    "id": 1,
+    "title": "Album 2", 
+    "artist": "Artist 1",
+    "description": "Artist 1's sophomore album, Album 2.",
+    "year": 2022,
+    "image":"https://via.placeholder.com/150"
+  },
+  {
+    "id": 2,
+    "title": "Album 3", 
+    "artist": "Artist 1",
+    "description": "Artist 1's trilogy album, Album 3.",
+    "year": 2022,
+    "image":"https://via.placeholder.com/150"
+  },
+  {
+    "id": 3,
+    "title": "Different Alb", 
+    "artist": "New Solo",
+    "description": "New Solo different album.",
+    "year": 2018,
+    "image":"https://via.placeholder.com/150"
+  }
+]
