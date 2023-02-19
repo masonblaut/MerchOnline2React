@@ -1,9 +1,7 @@
 import axios from 'axios';
 import React from 'react';
-import FormInput from './FormInput';
-import FormTextArea from './FormTextArea';
 
-class EditProduct extends React.Component {
+class NewDeleteProduct extends React.Component {
     
     state = {
         id: this.props.product.id,
@@ -40,7 +38,7 @@ class EditProduct extends React.Component {
     }
 
     saveProduct = async (product) => {
-        axios.put(`http://localhost:8080/service/products/`, product)
+        axios.post(`http://localhost:8080/service/products/delete/`, product)
         .then(result => {
             console.log(result);
             console.log(result.data);
@@ -49,16 +47,17 @@ class EditProduct extends React.Component {
     }
     
     render () {
-        console.log("EditProps", this.props);
+        console.log("DeleteProps", this.props);
         return (
         <div className="container">
             <form onSubmit={this.handleFormSubmit}>
                 <div className='form-group'>
-                    <h1>Edit Product {this.props.product.productName}:</h1>
-                        <FormInput id="productName" title="productName" placeholder={this.props.product.productName} value={this.props.product.productName} onChange={this.updateProductName} />
-                        <FormTextArea id="productNo" title="productNo" placeholder={this.props.product.productNo} value={this.props.product.productNo} onChange={this.updateProductNo} />
-                        <FormInput id="productPrice" title="Price" placeholder={this.props.product.price} value={this.props.product.price} onChange={this.updatePrice} />
-                        <FormInput id="productQuantity" title="Quantity" placeholder={this.props.product.quantity} value={this.props.product.quantity} onChange={this.updateQuantity} />
+                    <h1>Delete Product {this.props.product.productName}?</h1>
+                    <p align="center">Price: {this.props.product.price}</p><br/>
+                    <p align="center">Quantity: {this.props.product.quantity}</p><br/>
+                    <p align="center">ProductNo: {this.props.product.productNo}</p>
+                    <h1>Delete { this.props.product.id }?</h1>
+                    <h2>{this.props.product.productName}</h2>
                 </div>
                 <button type="button" className="btn btn-light">Cancel</button>
                 <button type="submit" className="btn btn-primary">Submit</button>
@@ -67,4 +66,4 @@ class EditProduct extends React.Component {
     }
 }
 
-export default EditProduct;
+export default NewDeleteProduct;

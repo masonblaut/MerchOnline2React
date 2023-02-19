@@ -39,10 +39,11 @@ class NewProduct extends React.Component {
     }
 
     saveProduct = async (product) => {
-        axios.post(`http://localhost:8080/service/products`, product)
+        axios.post(`http://localhost:8080/service/products/`, product)
         .then(result => {
             console.log(result);
             console.log(result.data);
+            this.props.onFinished();
         })
     }
     
@@ -54,8 +55,8 @@ class NewProduct extends React.Component {
                     <h1>Create a New Product:</h1>
                         <FormInput id="productName" title="ProductName" placeholder ="Enter productName" onChange={this.updateProductName} />
                         <FormTextArea id="productNo" title="productNo" placeholder="productNo" onChange={this.updateProductNo} />
-                        <FormInput id="productPrice" title="Price" placeholder="Price" onChange={this.updatePrice} />
-
+                        <FormInput id="productPrice" type="number" step="0.01" title="Price" placeholder="Price" onChange={this.updatePrice} />
+                        <FormInput id="productQuantity" type="number" step="1" title="Quantity" placeholder="0" onChange={this.updateQuantity}/>
                         {/*
                         
                         <input type="text" className="form-control" id="albumTitle" placeholder="Enter a Title"/>

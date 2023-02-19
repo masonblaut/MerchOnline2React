@@ -10,7 +10,7 @@ import Navbar from './Navbar';
 import NewProduct from './NewProduct';
 import { Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from "history";
-import DeleteProduct from './DeleteProduct';
+import NewDeleteProduct from './NewDeleteProduct';
 
 const history = createBrowserHistory();
 
@@ -112,6 +112,19 @@ class App extends React.Component {
         console.log("Cancelling Delete Product");          
     }
 
+    cancelDisplayProduct = () =>
+    {
+        history.push('/');
+        console.log("Cancelling Display Product");          
+    }
+
+    returnHome = () =>
+    {
+        history.push('/');
+        window.location.reload();
+        console.log("Operation was Successful!");          
+    }
+
   render() {
     return (
       <Router history = {history}>
@@ -128,10 +141,10 @@ class App extends React.Component {
             }
           />
           </Switch>
-          <Route exact path = "/new" render = { () => <NewProduct onCancel={this.cancelNewProduct} /> } />
+          <Route exact path = "/new" render = { () => <NewProduct onCancel={this.cancelNewProduct} onFinished={this.returnHome}/> } />
           <Route exact path = "/show/:productId" render = { ()=> <OneProduct product={this.state.productList[this.state.currentlySelectedproductId]} onCancel={this.cancelDisplayProduct}/> }/>
-          <Route exact path = "/edit/:productId" render = { ()=> <EditProduct product={this.state.productList[this.state.currentlySelectedproductId]} onCancel={this.cancelEditProduct}/> }/>  
-          <Route exact path = "/delete/:productId" render = { ()=> <DeleteProduct product={this.state.productList[this.state.currentlySelectedproductId]} onCancel={this.cancelDeleteProduct}/> }/>
+          <Route exact path = "/edit/:productId" render = { ()=> <EditProduct product={this.state.productList[this.state.currentlySelectedproductId]} onCancel={this.cancelEditProduct} onFinished={this.returnHome}/> }/>  
+          <Route exact path = "/delete/:productId" render = { ()=> <NewDeleteProduct product={this.state.productList[this.state.currentlySelectedproductId]} onCancel={this.cancelDeleteProduct} onFinished={this.returnHome}/> }/>
       </div>
       </Router>
     );

@@ -26,7 +26,6 @@ class ProductList extends React.Component{
                     productName = {product.productName}
                     productNo = {product.productNo}
                     buttonText = "OK"
-                    //image = {product.image}
                     onClick = {this.handleSelectOne}
                     editProduct = {this.handleEditProduct}
                     deleteProduct = {this.handleDeleteProduct}

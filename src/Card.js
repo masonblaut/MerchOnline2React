@@ -19,7 +19,7 @@ class Card extends React.Component {
     render(){
         return (
             <div className="card" style={{width: '12rem'}}>
-            <img src={"../assets/images/1.png"} className="card-img-top" alt={this.props.productName}/>
+            <img src={"../assets/images/tshirtIcon.png"} className="card-img-top" alt={this.props.productName}/>
             <div className="card-body">
                 <h5 className="card-title">{this.props.productName}</h5>
                 <p className="card-text">{this.props.productNo}</p>

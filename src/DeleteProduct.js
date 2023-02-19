@@ -2,17 +2,29 @@ import React from "react";
 import axios from "axios";
 //import { Link } from "react-router-dom";
 
-class deleteProduct extends React.Component {
+class DeleteProduct extends React.Component {
+
+    state = {
+        id: 1,
+        productName: "",
+        productNo: "",
+        price: 0,
+        quantity: 0
+    }
+
+    handleFormSubmit = (e) => {
+        e.preventDefault();
+        console.log("Final submit = ", this.state);
+        this.deleteSingleProduct(this.state);
+    }
 
     // Calls axios to run Delete /products/ route
     deleteSingleProduct = async (product) => {
 
-        console.log("Delete product", product.productName);
-        //console.log("Delete album title", title);
         axios.delete(`http://localhost:8080/service/products/${product.id}`)
         .then(result => {
-            console.log("result", result);
-            console.log("result data", result.data);
+            console.log(result);
+            console.log(result.data);
         })
     }
 
@@ -20,9 +32,12 @@ class deleteProduct extends React.Component {
         console.log("deleteRender props", this.props);
         return (
             <div className="container" align="center">
-                <form onSubmit={ ()=> this.deleteSingleProduct(this.props.product.productName, this.props.product.id)}>
-                    <h1>Delete { this.props.product.id }?</h1>
-                    <h2>{this.props.product.productName}</h2>
+                <form onSubmit={ ()=> this.handleFormSubmit}>
+                    <div className='form-group'>
+                        <h1>Delete { this.props.product.id }?</h1>
+                        <h2>{this.props.product.productName}</h2>
+                    </div>
+                    <button type="button" className="btn btn-light">Cancel</button>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
             </div>
@@ -30,4 +45,4 @@ class deleteProduct extends React.Component {
     }
 }
 
-export default deleteProduct;
+export default DeleteProduct;
