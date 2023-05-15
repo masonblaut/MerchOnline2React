@@ -19,7 +19,7 @@ class SearchForm extends React.Component {
         <div>
             <form onSubmit ={this.handleFormSubmit}>
                 <div className="form-group">
-                    <label htmlFor="search-term">Search Box:</label>
+                    <label htmlFor="search-term">Search:</label>
                     <input 
                     onChange={this.handleChangeInput}
                     type="text"

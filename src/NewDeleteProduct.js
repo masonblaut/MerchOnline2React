@@ -37,6 +37,11 @@ class NewDeleteProduct extends React.Component {
         this.saveProduct(this.state);
     }
 
+    handleCancel = (event) => {
+        console.log("Canceling Display Product");
+        this.props.onCancel();
+    }
+
     saveProduct = async (product) => {
         axios.post(`http://localhost:8080/service/products/delete/`, product)
         .then(result => {
@@ -59,7 +64,7 @@ class NewDeleteProduct extends React.Component {
                     <h1>Delete { this.props.product.id }?</h1>
                     <h2>{this.props.product.productName}</h2>
                 </div>
-                <button type="button" className="btn btn-light">Cancel</button>
+                <button type="button" className="btn btn-light" onClick={this.handleCancel}>Cancel</button>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
         </div>)

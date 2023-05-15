@@ -53,10 +53,38 @@ class NewProduct extends React.Component {
             <form onSubmit={this.handleFormSubmit}>
                 <div className='form-group'>
                     <h1>Create a New Product:</h1>
-                        <FormInput id="productName" title="ProductName" placeholder ="Enter productName" onChange={this.updateProductName} />
-                        <FormTextArea id="productNo" title="productNo" placeholder="productNo" onChange={this.updateProductNo} />
-                        <FormInput id="productPrice" type="number" step="0.01" title="Price" placeholder="Price" onChange={this.updatePrice} />
-                        <FormInput id="productQuantity" type="number" step="1" title="Quantity" placeholder="0" onChange={this.updateQuantity}/>
+                        <FormInput 
+                            id="productName" 
+                            title="ProductName" 
+                            placeholder ="Enter productName" 
+                            onChange={this.updateProductName} 
+                            required
+                        />
+                        <FormTextArea 
+                            id="productNo" 
+                            title="productNo" 
+                            placeholder="productNo" 
+                            onChange={this.updateProductNo}
+                            required 
+                        />
+                        <FormInput 
+                            id="productPrice" 
+                            type="number" 
+                            step="0.01" 
+                            title="Price" 
+                            placeholder="Price" 
+                            onChange={this.updatePrice} 
+                            required
+                        />
+                        <FormInput 
+                            id="productQuantity" 
+                            type="number" 
+                            step="1" 
+                            title="Quantity" 
+                            placeholder="0" 
+                            onChange={this.updateQuantity}
+                            required
+                        />
                         {/*
                         
                         <input type="text" className="form-control" id="albumTitle" placeholder="Enter a Title"/>

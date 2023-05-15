@@ -13,7 +13,15 @@ class FormInput extends React.Component {
 
         return (<div>
             <label htmlFor={this.props.id}>{this.props.title}</label>
-            <input onChange={this.handleChangeData} onBlur={this.handleChangeData} value={this.state.inputData} type="text" className="form-control" id={this.props.id} placeholder={this.props.placeholder} />
+            <input 
+                onChange={this.handleChangeData} 
+                onBlur={this.handleChangeData} 
+                value={this.state.inputData} 
+                type="text" className="form-control" 
+                id={this.props.id} 
+                placeholder={this.props.placeholder} 
+                required={this.props.required} 
+            />
         </div>)
     }
 }
