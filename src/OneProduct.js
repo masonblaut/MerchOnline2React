@@ -15,9 +15,17 @@ class OneProduct extends React.Component
                 <h2>Product Details</h2>
                     <div className="container" align="center">
                         <div className="row">
-                            <div className="card">
-                            <img src={"../assets/images/tshirtIcon.png"} className="card-img-top" alt={this.props.product.title} />
-                                <div className="card-body">
+                            <div className="card2">
+                            <img 
+                                src={"../assets/images/"+this.props.product.productNo}
+                                onError={({ currentTarget }) => {
+                                    currentTarget.onerror = null;
+                                    currentTarget.src="../assets/images/tshirtIcon.png"; 
+                                }}
+                                className="card-img-top"
+                                alt={this.props.product.productName}
+                            />
+                            <div className="card-body">
                                 <h5 className="card-title">{this.props.product.productName}</h5>
                                 <p className="card-text" align="center">{this.props.product.price}</p>
                                 <p className="card-text" align="center">{this.props.product.quantity}</p>

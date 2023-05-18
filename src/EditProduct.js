@@ -39,6 +39,11 @@ class EditProduct extends React.Component {
         this.saveProduct(this.state);
     }
 
+    handleCancel = (event) => {
+        console.log("Canceling Display Product");
+        this.props.onCancel();
+    }
+
     saveProduct = async (product) => {
         axios.put(`http://localhost:8080/service/products/`, product)
         .then(result => {
@@ -51,7 +56,19 @@ class EditProduct extends React.Component {
     render () {
         console.log("EditProps", this.props);
         return (
+
         <div className="container">
+            <div className='card2'>
+            <img 
+                src={"../assets/images/"+this.props.product.productNo}
+                onError={({ currentTarget }) => {
+                    currentTarget.onerror = null;
+                    currentTarget.src="../assets/images/tshirtIcon.png"; 
+                }}
+                className="card-img-top"
+                alt={this.props.product.productName}
+            />
+            
             <form onSubmit={this.handleFormSubmit}>
                 <div className='form-group'>
                     <h1>Edit Product {this.props.product.productName}:</h1>
@@ -60,9 +77,10 @@ class EditProduct extends React.Component {
                         <FormInput id="productPrice" title="Price" placeholder={this.props.product.price} value={this.props.product.price} onChange={this.updatePrice} />
                         <FormInput id="productQuantity" title="Quantity" placeholder={this.props.product.quantity} value={this.props.product.quantity} onChange={this.updateQuantity} />
                 </div>
-                <button type="button" className="btn btn-light">Cancel</button>
+                <button type="button" className="btn btn-light" onClick={this.handleCancel}>Cancel</button>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
+            </div>
         </div>)
     }
 }

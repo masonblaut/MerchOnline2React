@@ -38,7 +38,7 @@ class NewDeleteProduct extends React.Component {
     }
 
     handleCancel = (event) => {
-        console.log("Canceling Display Product");
+        console.log("Canceling Delete Product");
         this.props.onCancel();
     }
 
@@ -55,18 +55,29 @@ class NewDeleteProduct extends React.Component {
         console.log("DeleteProps", this.props);
         return (
         <div className="container">
+            <div className='card2'>
+            <img 
+                src={"../assets/images/"+this.props.product.productNo}
+                onError={({ currentTarget }) => {
+                    currentTarget.onerror = null;
+                    currentTarget.src="../assets/images/tshirtIcon.png"; 
+                }}
+                className="card-img-top"
+                alt={this.props.product.productName}
+            />
+            
             <form onSubmit={this.handleFormSubmit}>
                 <div className='form-group'>
-                    <h1>Delete Product {this.props.product.productName}?</h1>
+                    <h1>Delete Product {this.props.product.productName}?</h1><br/>
                     <p align="center">Price: {this.props.product.price}</p><br/>
                     <p align="center">Quantity: {this.props.product.quantity}</p><br/>
-                    <p align="center">ProductNo: {this.props.product.productNo}</p>
-                    <h1>Delete { this.props.product.id }?</h1>
-                    <h2>{this.props.product.productName}</h2>
+                    <p align="center">ProductNo: {this.props.product.productNo}</p><br/>
+                    <h3 align="center">Are you sure you want to Delete { this.props.product.productName }?</h3>
                 </div>
                 <button type="button" className="btn btn-light" onClick={this.handleCancel}>Cancel</button>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
+            </div>
         </div>)
     }
 }
